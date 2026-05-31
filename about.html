@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="light" lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Smart Efficiency | AIでラクする働き方</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@500;600&amp;family=Plus+Jakarta+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f7fafb",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e6e9ea",
+                    "surface-variant": "#e0e3e4",
+                    "tertiary-container": "#767471",
+                    "primary-fixed-dim": "#adcdc3",
+                    "surface-tint": "#47645c",
+                    "tertiary-fixed": "#e5e2dd",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#414846",
+                    "tertiary-fixed-dim": "#c9c6c2",
+                    "outline": "#727976",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#000604",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#716252",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#fcffe3",
+                    "tertiary": "#5d5c58",
+                    "on-primary-fixed": "#02201a",
+                    "secondary-container": "#f4dfcb",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#ebeeef",
+                    "outline-variant": "#c1c8c4",
+                    "on-surface": "#181c1d",
+                    "inverse-on-surface": "#eef1f2",
+                    "secondary-fixed-dim": "#d7c3b0",
+                    "surface-container-low": "#f1f4f5",
+                    "secondary-fixed": "#f4dfcb",
+                    "on-secondary-fixed-variant": "#524436",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "surface-container-highest": "#e0e3e4",
+                    "background": "#f7fafb",
+                    "on-background": "#181c1d",
+                    "surface-bright": "#f7fafb",
+                    "inverse-primary": "#adcdc3",
+                    "surface-dim": "#d7dadb",
+                    "primary-fixed": "#c9eadf",
+                    "secondary": "#6b5c4c",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#2f4c44",
+                    "inverse-surface": "#2d3132",
+                    "primary-container": "#5f7d74",
+                    "on-secondary-fixed": "#241a0e",
+                    "primary": "#47645c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "stack-lg": "80px",
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "stack-md": "32px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "20px",
+                    "stack-sm": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Noto Serif"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Noto Serif"],
+                    "headline-md-mobile": ["Noto Serif"],
+                    "display-lg-mobile": ["Noto Serif"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-md-mobile": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #f7fafb;
+            color: #181c1d;
+        }
+        .tonal-gradient {
+            background: linear-gradient(180deg, rgba(244, 223, 203, 0.4) 0%, rgba(247, 250, 251, 0) 100%);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md">
+    <div class="max-w-container-max mx-auto flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-20">
+        <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <span class="material-symbols-outlined text-primary" data-icon="temp_preferences_custom">temp_preferences_custom</span>
+            <span class="font-headline-md-mobile text-headline-md-mobile font-bold text-primary">Smart Efficiency</span>
+        </a>
+        <a href="index.html" class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-sm text-label-sm hover:opacity-90 transition-opacity flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm">arrow_back</span>
+            トップへ戻る
+        </a>
+    </div>
+    <div class="h-[1px] bg-surface-container-low"></div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden pt-stack-md pb-stack-lg px-margin-mobile transition-all duration-700 ease-out opacity-100 translate-y-0">
+    <div class="tonal-gradient absolute inset-0 -z-10"></div>
+    <div class="max-w-container-max mx-auto flex flex-col md:flex-row gap-stack-md items-center">
+        <div class="w-full md:w-1/2 order-2 md:order-1">
+            <span class="text-primary font-label-sm text-label-sm uppercase tracking-widest mb-4 block">Human-AI Hybrid Workflow</span>
+            <h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface mb-6 leading-tight">
+                AIでラクする働き方
+            </h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-sm max-w-[500px]">
+                フリーランス歴10年。発達障害児の子育てと仕事を両立しながら、時間と体力の限界を超えてたどり着いた「がんばらない」効率化。
+            </p>
+            <div class="flex gap-4 items-center">
+                <a href="index.html#reserve" class="bg-primary text-on-primary px-stack-md py-3 rounded-lg font-label-sm text-label-sm shadow-sm hover:opacity-90 transition-all text-center">
+                    Methodology
+                </a>
+                <a href="index.html#reserve" class="border border-outline text-on-surface px-stack-md py-3 rounded-lg font-label-sm text-label-sm hover:bg-surface-variant transition-all text-center">
+                    Connect
+                </a>
+            </div>
+        </div>
+        <div class="w-full md:w-1/2 order-1 md:order-2">
+            <div class="relative group">
+                <!-- Tonal Shadow/Glow -->
+                <div class="absolute -inset-4 bg-primary/5 blur-3xl rounded-full -z-10 group-hover:bg-primary/10 transition-all duration-500"></div>
+                <div class="aspect-[0.67] w-full rounded-2xl overflow-hidden border border-outline-variant/30">
+                    <img alt="Smart Efficiency Expert Portrait" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/ADBb0ujgJdRqPGTdza4gskpa7xkmMESm0ZqJM6OJD7sM6cVK1niF3Z0ElOUrXk_kU_9tbyRbYxG0kk0wRoOuWailk-HCIyppNMSfO66_ZV9qS_1qafpOv4X7Hc4AbXuL5W3dEnyiTOJ3b17T4PD6AZt1ptlZIpdoYB3RgEYA2QtxMz1iDhE45RJ6zs-H2GCv-PAzzH92rFoyc40OBcGUPrzrRixe26LqeNLwx3I1hL0r4eGvprq2LWepnpWDXx8">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Profile Section (Asymmetric Layout) -->
+<section class="py-stack-lg px-margin-mobile bg-surface-container-lowest transition-all duration-700 ease-out opacity-100 translate-y-0">
+    <div class="max-w-container-max mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+            <div class="md:col-span-1 hidden md:block"></div>
+            <div class="md:col-span-5 flex flex-col gap-4">
+                <h2 class="font-headline-md-mobile text-headline-md-mobile text-primary border-l-4 border-primary pl-4">
+                    フリーランス歴10年の軌跡
+                </h2>
+                <div class="h-1 w-20 bg-secondary-container"></div>
+            </div>
+            <div class="md:col-span-5">
+                <p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+                    時間も体力も限られる中でたどり着いたのは、AIを活用した効率的な働き方でした。<br><br>
+                    現在は行政・職業訓練で講師として活動中。テクノロジーを冷たいツールとしてではなく、私たちの生活に「余白」を生むための優しいパートナーとして活用する術を伝えています。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Core Value section (Bento/Card focus) -->
+<section class="py-stack-lg px-margin-mobile transition-all duration-700 ease-out opacity-100 translate-y-0">
+    <div class="max-w-container-max mx-auto">
+        <div class="bg-secondary-container/30 rounded-3xl p-stack-md md:p-stack-lg relative overflow-hidden">
+            <!-- Decorative Element -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+            <div class="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto">
+                <span class="material-symbols-outlined text-primary text-5xl mb-6" data-icon="auto_awesome">auto_awesome</span>
+                <h2 class="font-display-lg-mobile text-display-lg-mobile text-on-secondary-container mb-stack-sm">
+                    “がんばらないのに回る生活”
+                </h2>
+                <p class="font-body-lg text-body-lg text-on-secondary-fixed-variant leading-relaxed">
+                    子どもとの時間をちゃんと守るために。AIを賢く使い、ルーチンワークから解放されることで生まれる「心のゆとり」をデザインする方法を発信しています。
+                </p>
+                <div class="mt-stack-md flex flex-wrap justify-center gap-4">
+                    <div class="bg-surface/80 backdrop-blur-sm p-4 rounded-xl border border-outline-variant/30 flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+                        <span class="font-label-sm text-label-sm">Time Sovereignty</span>
+                    </div>
+                    <div class="bg-surface/80 backdrop-blur-sm p-4 rounded-xl border border-outline-variant/30 flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary" data-icon="psychology">psychology</span>
+                        <span class="font-label-sm text-label-sm">AI Integration</span>
+                    </div>
+                    <div class="bg-surface/80 backdrop-blur-sm p-4 rounded-xl border border-outline-variant/30 flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary" data-icon="family_restroom">family_restroom</span>
+                        <span class="font-label-sm text-label-sm">Family Priority</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CTA / Connect -->
+<section class="py-stack-lg px-margin-mobile text-center transition-all duration-700 ease-out opacity-100 translate-y-0">
+    <div class="max-w-[600px] mx-auto">
+        <h3 class="font-headline-md text-headline-md mb-stack-sm">一歩、軽く踏み出してみませんか？</h3>
+        <p class="text-on-surface-variant mb-stack-md">毎日のタスクに追われる日々から、AIを相棒にしたクリエイティブな毎日へ。</p>
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <input class="bg-surface-container-low border-b-2 border-outline-variant focus:border-primary focus:ring-0 px-4 py-3 min-w-[300px] rounded-t-lg transition-all" placeholder="メールアドレスを入力" type="email">
+            <a href="index.html#reserve" class="bg-primary text-on-primary px-8 py-3 rounded-lg font-label-sm text-label-sm shadow-md hover:-translate-y-1 transition-all duration-300 flex items-center justify-center">
+                メルマガに登録する
+            </a>
+        </div>
+    </div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest w-full py-stack-lg">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-start gap-stack-md">
+        <div class="flex flex-col gap-4">
+            <span class="font-headline-md-mobile text-headline-md-mobile text-primary font-bold">Smart Efficiency</span>
+            <p class="text-on-surface-variant font-body-md text-body-md max-w-[300px]">© 2024 Smart Efficiency. Designed for calm productivity.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-stack-md">
+            <a class="text-on-surface-variant hover:text-primary transition-all duration-300 hover:translate-x-1 font-body-md text-body-md" href="index.html">Home</a>
+            <a class="text-on-surface-variant hover:text-primary transition-all duration-300 hover:translate-x-1 font-body-md text-body-md" href="index.html#about">About</a>
+            <a class="text-on-surface-variant hover:text-primary transition-all duration-300 hover:translate-x-1 font-body-md text-body-md" href="index.html#reserve">Reserve</a>
+        </div>
+    </div>
+</footer>
+<script>
+    // Simple entrance animation
+    document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        elements.forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700', 'ease-out');
+            observer.observe(el);
+        });
+    });
+</script>
+</body>
+</html>
