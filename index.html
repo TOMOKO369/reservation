@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>DevGuide Pro - PTAの負担を減らす！AI活用ガイド</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#fcf9f8",
+                        "inverse-primary": "#adc6ff",
+                        "on-surface-variant": "#424753",
+                        "on-secondary-fixed": "#002108",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c2c6d5",
+                        "tertiary-fixed-dim": "#ffb4a9",
+                        "tertiary-fixed": "#ffdad5",
+                        "on-secondary-container": "#00722f",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#fefcff",
+                        "primary-fixed": "#d8e2ff",
+                        "surface": "#fcf9f8",
+                        "on-secondary-fixed-variant": "#005320",
+                        "outline": "#727785",
+                        "secondary-fixed": "#89fa9b",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary": "#006e2c",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#86f898",
+                        "on-background": "#1b1b1c",
+                        "on-tertiary-fixed-variant": "#930004",
+                        "surface-container": "#f0eded",
+                        "on-primary-fixed-variant": "#004494",
+                        "surface-container-high": "#eae7e7",
+                        "on-secondary": "#ffffff",
+                        "primary": "#0058bd",
+                        "surface-dim": "#dcd9d9",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e5e2e1",
+                        "inverse-on-surface": "#f3f0ef",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-surface": "#1b1b1c",
+                        "surface-tint": "#005ac1",
+                        "tertiary": "#b51b15",
+                        "on-tertiary-fixed": "#410001",
+                        "secondary-fixed-dim": "#6ddd81",
+                        "inverse-surface": "#303030",
+                        "tertiary-container": "#d9372b",
+                        "surface-bright": "#fcf9f8",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#001a41",
+                        "surface-variant": "#e5e2e1",
+                        "primary-container": "#2771df"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "max-width": "1280px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-sm": ["13px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .blob-bg {
+            position: absolute;
+            z-index: -1;
+            filter: blur(40px);
+            opacity: 0.15;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline docked full-width top-0 z-50 fixed">
+    <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
+        <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-primary dark:text-inverse-primary text-3xl">menu_book</span>
+            <span class="font-display-lg text-display-lg-mobile md:text-display-lg font-bold text-primary dark:text-inverse-primary tracking-tight">DevGuide Pro</span>
+        </div>
+        <nav class="hidden md:flex gap-8 items-center">
+            <a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-container-lowest transition-colors px-3 py-1 rounded-lg font-bold" href="#">Home</a>
+            <a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high transition-colors px-3 py-1 rounded-lg" href="#">About</a>
+            <a class="text-primary dark:text-inverse-primary font-bold px-4 py-2 border-2 border-primary rounded-full hover:bg-primary hover:text-white transition-all" href="#reserve">Reserve Now</a>
+        </nav>
+    </div>
+</header>
+<main class="pt-24 pb-20">
+<!-- Hero Section -->
+<section class="relative px-margin-mobile md:px-margin-desktop py-12 md:py-20 flex flex-col md:flex-row items-center gap-12 overflow-hidden">
+    <div class="blob-bg w-96 h-96 bg-primary-container -top-20 -left-20"></div>
+    <div class="blob-bg w-80 h-80 bg-secondary-container -bottom-20 -right-20"></div>
+    <div class="flex-1 space-y-6 text-center md:text-left z-10">
+        <div class="inline-block px-4 py-1 bg-tertiary-container text-on-tertiary font-label-sm text-label-sm rounded-full mb-2">NEW RELEASE</div>
+        <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-background leading-tight">
+            PTAの負担を減らす！<br/>
+            <span class="text-primary">AI活用ガイド</span>
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+            忙しいママ・パパのために。最新のAI技術を使って、面倒なPTA業務を「爆速」で終わらせる具体的なテクニックを公開。
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+            <a class="bg-primary text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:scale-105 active:scale-95 transition-transform flex items-center justify-center gap-2" href="#reserve">
+                予約する <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+            <a class="border-2 border-outline text-on-surface px-8 py-4 rounded-full font-bold text-lg hover:bg-surface-container transition-colors flex items-center justify-center" href="#about">
+                詳細を見る
+            </a>
+        </div>
+    </div>
+    <div class="flex-1 relative max-w-md md:max-w-none">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl rotate-2 transition-transform hover:rotate-0 duration-500 border-4 border-white">
+            <img alt="PTA AI Automation Guide Cover" class="w-full h-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9z_g7sJNUFxpy41MPwB1LMhyamdhI5lZ27VucF9ZDlAcckilWbd720EODzEGe6Zo08hiFfrHIPsg6Fp_z90ToPZWZ6O45QnJOtT-E6IMbYhi8B_xECO_HJOSn6UStlK-1GMX6Kr9vOC8cZRQWEzr_JTGfG8yerOefK4O9oblaFihACiYdVlI204C3uq2wKyoj1PcuE8VDTGaACrZiz8BmzOO_Zt8krMp8BOuzwFy_b8svk1_ssoFh2jfxlfE_VMKXI3EHtj1zdg"/>
+        </div>
+        <!-- Playful Mascot Accent -->
+        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-outline-variant flex items-center gap-3 animate-bounce">
+            <span class="material-symbols-outlined text-tertiary text-4xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+            <div>
+                <p class="font-bold text-sm">AIでストレスフリー！</p>
+                <p class="text-xs text-on-surface-variant">作業時間を90%削減</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Bonus Offer Section -->
+<section class="px-margin-mobile md:px-margin-desktop py-12">
+    <div class="bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center gap-8 border-4 border-white shadow-xl">
+        <div class="flex-1 z-10">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1;">star</span>
+                <span class="font-label-sm text-label-sm tracking-widest uppercase">Special Bonus</span>
+            </div>
+            <h2 class="font-display-lg-mobile text-display-lg-mobile md:text-4xl mb-4 leading-tight">
+                WEBサイトの作り方ガイドをプレゼント！
+            </h2>
+            <p class="font-body-md text-body-md opacity-90 mb-6">
+                予約購入者限定の特典コンテンツ。PTAのお知らせページや連絡用サイトを専門知識なしで爆速構築する方法を伝授します。
+                <br class="hidden md:block"/>
+                <span class="font-bold underline mt-2 block">(購入後のリンクより提供)</span>
+            </p>
+            <div class="flex items-center gap-2 text-secondary-fixed font-bold">
+                <span class="material-symbols-outlined">check_circle</span>
+                <span>本日予約限定の特別付録</span>
+            </div>
+        </div>
+        <div class="w-full md:w-1/3 z-10 flex justify-center">
+            <div class="bg-white/20 backdrop-blur-md p-6 rounded-2xl border border-white/30 text-center">
+                <span class="material-symbols-outlined text-6xl mb-4">redeem</span>
+                <div class="text-2xl font-extrabold">FREE GIFT</div>
+            </div>
+        </div>
+        <!-- Abstract BG patterns -->
+        <div class="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full"></div>
+        <div class="absolute -left-10 -bottom-10 w-48 h-48 bg-white/10 rounded-full"></div>
+    </div>
+</section>
+<!-- About Section (Bento Grid) -->
+<section class="px-margin-mobile md:px-margin-desktop py-16" id="about">
+    <div class="text-center mb-12">
+        <h2 class="font-headline-md text-headline-md text-on-surface mb-2">解決できる3つの悩み</h2>
+        <div class="w-20 h-1.5 bg-tertiary mx-auto rounded-full"></div>
+    </div>
+    <div class="bento-grid">
+        <!-- Card 1 -->
+        <div class="col-span-1 md:col-span-2 bg-surface-container rounded-3xl p-8 flex flex-col justify-between border border-outline-variant hover:border-primary transition-colors group">
+            <div>
+                <div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center mb-6 text-on-primary-container group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined">send</span>
+                </div>
+                <h3 class="font-headline-md text-headline-md mb-4">一斉送信を効率化</h3>
+                <p class="font-body-md text-on-surface-variant">
+                    LINEやメールなどの連絡事項を、AIを使って数秒で作成。相手に失礼のない、かつ分かりやすい文章を自動生成します。
+                </p>
+            </div>
+            <div class="mt-8 pt-6 border-t border-outline-variant flex items-center gap-2 text-primary font-bold">
+                <span>Read More</span>
+                <span class="material-symbols-outlined">chevron_right</span>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-span-1 md:col-span-2 bg-secondary-container rounded-3xl p-8 flex items-center gap-8 border border-outline-variant hover:border-secondary transition-colors group">
+            <div class="flex-1">
+                <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center mb-6 text-secondary group-hover:rotate-12 transition-transform">
+                    <span class="material-symbols-outlined">timer</span>
+                </div>
+                <h3 class="font-headline-md text-headline-md mb-4">作業時間を大幅に短縮</h3>
+                <p class="font-body-md text-on-secondary-fixed-variant">
+                    会議の議事録、イベントの企画書、配布プリントの作成。これまで数時間かかっていた作業が15分で完了。
+                </p>
+            </div>
+            <div class="hidden sm:block w-32 h-32 opacity-20 group-hover:opacity-100 transition-opacity">
+                <span class="material-symbols-outlined text-8xl text-secondary" style="font-variation-settings: 'FILL' 1;">speed</span>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-span-1 md:col-span-4 bg-tertiary-fixed rounded-3xl p-8 flex flex-col md:flex-row items-center gap-8 border border-outline-variant hover:border-tertiary transition-colors">
+            <div class="p-4 bg-white rounded-2xl shadow-sm">
+                <span class="material-symbols-outlined text-5xl text-tertiary" style="font-variation-settings: 'FILL' 1;">volunteer_activism</span>
+            </div>
+            <div class="text-center md:text-left">
+                <h3 class="font-headline-md text-headline-md mb-2 text-on-tertiary-fixed">心にゆとりを、ママの時間に彩りを。</h3>
+                <p class="font-body-md text-on-tertiary-fixed-variant">
+                    PTA業務のストレスから解放され、家族や自分自身の時間を大切に。AIはあなたの「最強の助手」になります。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Reservation Form -->
+<section class="px-margin-mobile md:px-margin-desktop py-16" id="reserve">
+    <div class="max-w-2xl mx-auto bg-white rounded-[2rem] shadow-2xl border border-outline-variant p-8 md:p-12 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 opacity-10">
+            <span class="material-symbols-outlined text-9xl">event_note</span>
+        </div>
+        <div class="text-center mb-10">
+            <span class="text-primary font-bold block mb-2">PRE-ORDER</span>
+            <h2 class="font-headline-md text-headline-md text-on-surface">予約申し込みフォーム</h2>
+            <p class="text-on-surface-variant mt-2 font-body-md">特典を受け取るための情報を入力してください</p>
+        </div>
+        <form class="space-y-6">
+            <div>
+                <label class="block font-label-sm text-label-sm text-on-surface-variant mb-2 ml-1" for="name">お名前 (NAME)</label>
+                <input class="w-full px-6 py-4 rounded-xl border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-surface-container-low" id="name" placeholder="山田 太郎" type="text" required/>
+            </div>
+            <div>
+                <label class="block font-label-sm text-label-sm text-on-surface-variant mb-2 ml-1" for="email">メールアドレス (EMAIL)</label>
+                <input class="w-full px-6 py-4 rounded-xl border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary transition-all bg-surface-container-low" id="email" placeholder="example@mail.com" type="email" required/>
+            </div>
+            <div class="pt-4">
+                <button class="w-full bg-primary text-white py-5 rounded-2xl font-bold text-lg shadow-lg hover:bg-primary-container transition-all flex items-center justify-center gap-3" type="submit">
+                    予約を確定する
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </div>
+            <p class="text-center text-xs text-on-surface-variant opacity-70">
+                ※登録したメールアドレスに特典の案内をお送りします。
+            </p>
+        </form>
+    </div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-high border-t border-outline-variant dark:border-outline full-width bottom">
+    <div class="w-full py-base px-margin-mobile md:px-margin-desktop mt-gutter flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex flex-col items-center md:items-start">
+            <span class="font-display-lg text-display-lg text-primary tracking-tight">DevGuide Academic</span>
+            <p class="text-on-surface-variant font-body-md">© 2024 DevGuide Academic. All rights reserved.</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6">
+            <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors hover:underline" href="#">Terms of Service</a>
+            <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors hover:underline" href="#">Privacy Policy</a>
+            <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors hover:underline" href="#">Contact Support</a>
+        </div>
+    </div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-2 bg-surface dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-lg z-50 rounded-t-xl">
+    <a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 transition-all" href="#">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+        <span class="font-label-sm text-label-sm">Home</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant py-1 hover:bg-surface-variant transition-all" href="#about">
+        <span class="material-symbols-outlined">info</span>
+        <span class="font-label-sm text-label-sm">About</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant py-1 hover:bg-surface-variant transition-all" href="#reserve">
+        <span class="material-symbols-outlined">event_available</span>
+        <span class="font-label-sm text-label-sm">Reserve</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant py-1 hover:bg-surface-variant transition-all" href="#">
+        <span class="material-symbols-outlined">redeem</span>
+        <span class="font-label-sm text-label-sm">Bonus</span>
+    </a>
+</nav>
+<script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Form submission micro-interaction
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button');
+        const originalContent = btn.innerHTML;
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> 送信中...';
+        btn.classList.add('opacity-80', 'pointer-events-none');
+        
+        setTimeout(() => {
+            btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> 予約完了！';
+            btn.classList.remove('bg-primary');
+            btn.classList.add('bg-secondary');
+            form.reset();
+        }, 1500);
+    });
+</script>
+</body>
+</html>
